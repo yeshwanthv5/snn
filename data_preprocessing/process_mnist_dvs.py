@@ -4,10 +4,10 @@ import glob
 import numpy as np
 import math
 import struct
-from data_preprocessing.misc import one_hot, make_output, make_stats_group
+from misc import one_hot, make_output, make_stats_group
 
 """
-Load and preprocess data from the MNIST-DVS dataset. The data samples had previously been processed using matlab scripts provided by the authors. 
+Load and preprocess data from the MNIST-DVS dataset. The data samples had previously been processed using matlab scripts provided by the authors.
 See http://www2.imse-cnm.csic.es/caviar/MNISTDVS.html
 """
 
@@ -189,10 +189,10 @@ def make_mnist_dvs(path_to_data, path_to_hdf5, digits, max_pxl_value, min_pxl_va
     hdf5_file.close()
 
 
-path_to_data = r'/path/to/processed_polarity'
+path_to_data = r'../../datasets/MNIST-DVS/processed_mnist'
 
 # path_to_data = r'path/to/mnist-dvs/processed_polarity'
-path_to_data = r'C:\Users\K1804053\Desktop\PhD\Federated SNN\processed_polarity'
+# path_to_data = r'C:\Users\K1804053\Desktop\PhD\Federated SNN\processed_polarity'
 
 # digits to consider
 digits = [1, 7]
@@ -222,11 +222,6 @@ else:
             name = r'%dms_%dpxl_%d_digits.hdf5' % (int(window_length / 1000), max_pxl_value - min_pxl_value + 1, len(digits))
     else:
         name = r'_%dms_%dpxl_%d_digits_C_%d.hdf5' % (int(window_length / 1000), max_pxl_value - min_pxl_value + 1, len(digits), alphabet_size)
-path_to_hdf5 = r'path/to/datasets/mnist-dvs/mnist_dvs_' + name
+path_to_hdf5 = r'../../datasets/mnist-dvs/mnist_dvs_' + name
 
 make_mnist_dvs(path_to_data, path_to_hdf5, digits, max_pxl_value, min_pxl_value, T_max, window_length, scale, polarity, pattern, alphabet_size)
-
-
-
-
-
